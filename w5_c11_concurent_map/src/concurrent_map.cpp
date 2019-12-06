@@ -62,9 +62,7 @@ map<K, V> ConcurrentMap<K, V>::BuildOrdinaryMap() {
   return result;
 }
 
-void RunConcurrentUpdates(
-    ConcurrentMap<int, int>& cm, size_t thread_count, int key_count
-) {
+void RunConcurrentUpdates(ConcurrentMap<int, int>& cm, size_t thread_count, int key_count) {
   auto kernel = [&cm, key_count](int seed) {
     vector<int> updates(key_count);
     iota(begin(updates), end(updates), -key_count / 2);
