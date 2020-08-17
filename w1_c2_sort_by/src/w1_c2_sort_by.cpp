@@ -6,6 +6,7 @@
 #include <tuple>
 #include <sstream>
 #include <iomanip>
+#include <vector>
 using namespace std;
 
 #define SORT_BY(field) [](const AirlineTicket& lhs, const AirlineTicket& rhs) { \
