@@ -8,8 +8,7 @@ using namespace std;
 
 class HotelManager {
 public:
-  void Book(int64_t time, const string& hotel_name,
-            int client_id, int room_count) {
+  void Book(int64_t time, const string& hotel_name, int client_id, int room_count) {
     current_time_ = time;
     hotels_[hotel_name].Book({time, client_id, room_count});
   }
