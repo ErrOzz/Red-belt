@@ -1,6 +1,6 @@
 #include "stack_vector.h"
-
 #include "test_runner.h"
+
 #include "profile.h"
 
 #include <random>

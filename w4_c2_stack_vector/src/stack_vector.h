@@ -8,7 +8,7 @@ using namespace std;
 template <typename T, size_t N>
 class StackVector {
 public:
-  explicit StackVector(size_t a_size = 0);
+  explicit StackVector(size_t size = 0);
 
   T& operator[](size_t index);
   const T& operator[](size_t index) const;
@@ -30,9 +30,9 @@ private:
 };
 
 template <typename T, size_t N>
-StackVector<T, N>::StackVector(size_t a_size) : size_(a_size) {
+StackVector<T, N>::StackVector(size_t size) : size_(size) {
   if (size_ > N) {
-    throw invalid_argument("Size can't be large than capacity");
+    throw invalid_argument("The size can't be larger than the capacity");
   }
 }
 
