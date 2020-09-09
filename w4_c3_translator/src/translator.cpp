@@ -27,13 +27,11 @@ private:
     auto find_it = dict.find(word);
     if (find_it == dict.end()) {
       return *(words_.emplace(word).first);
-    } else {
-      rev_dict.erase(find_it->second);
-      dict.erase(find_it);
-      return find_it->first;
     }
+    rev_dict.erase(find_it->second);
+    return find_it->first;
   }
-  static string_view Translate(const map<string_view, string_view>& dict, string_view word) {
+  string_view Translate(const map<string_view, string_view>& dict, string_view word) const {
     auto result_it = dict.find(word);
     return result_it == dict.end() ? "" : result_it->second;
   }
@@ -46,10 +44,13 @@ void TestSimple() {
   Translator translator;
   translator.Add(string("okno"), string("window"));
   translator.Add(string("stol"), string("table"));
+  translator.Add(string("super"), string("super"));
 
   ASSERT_EQUAL(translator.TranslateForward("okno"), "window");
   ASSERT_EQUAL(translator.TranslateBackward("table"), "stol");
   ASSERT_EQUAL(translator.TranslateBackward("stol"), "");
+  ASSERT_EQUAL(translator.TranslateForward("super"), "super");
+  ASSERT_EQUAL(translator.TranslateBackward("super"), "super");
 
   translator.Add(string("stol"), string("desk"));
   ASSERT_EQUAL(translator.TranslateForward("stol"), "desk");

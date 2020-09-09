@@ -54,7 +54,7 @@ T* StackVector<T, N>::begin() {
 
 template <typename T, size_t N>
 T* StackVector<T, N>::end() {
-  return data_.begin() + size_;
+  return data_.end();
 }
 
 template <typename T, size_t N>
@@ -64,7 +64,7 @@ const T* StackVector<T, N>::begin() const {
 
 template <typename T, size_t N>
 const T* StackVector<T, N>::end() const {
-  return data_.begin() + size_;
+  return data_.end();
 }
 
 template <typename T, size_t N>
@@ -74,13 +74,13 @@ size_t StackVector<T, N>::Size() const {
 
 template <typename T, size_t N>
 size_t StackVector<T, N>::Capacity() const {
-  return data_.size();
+  return N;
 }
 
 template <typename T, size_t N>
 void StackVector<T, N>::PushBack(const T& value) {
   if (Size() == Capacity()) {
-    throw overflow_error("Size has reached capacity");
+    throw overflow_error("The size has reached the capacity");
   }
   data_[size_++] = value;
 }
@@ -88,7 +88,7 @@ void StackVector<T, N>::PushBack(const T& value) {
 template <typename T, size_t N>
 T StackVector<T, N>::PopBack() {
   if (!Size()) {
-    throw underflow_error("Size haz reached zero");
+    throw underflow_error("The size is zero");
   }
   return data_[--size_];
 }
