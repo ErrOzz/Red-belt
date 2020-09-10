@@ -20,7 +20,7 @@ private:
   ostream& os;
   bool log_line = false;
   bool log_file = false;
-  int line;
+  int line = 0;
   string file;
 };
 
