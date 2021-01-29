@@ -39,9 +39,9 @@ public:
     GetRef(airport) = 0;
   }
 
-  static const size_t SIZE = static_cast<size_t>(TAirport::Last_);
-  using Item = pair<TAirport, size_t>;
-  using Items = array<Item, SIZE>;
+  static const size_t SIZE = static_cast<size_t>(TAirport::Last_);    // поле SIZE должно быть известно на этапе инициализации шаблона
+  using Item = pair<TAirport, size_t>;                                // поэтому оно должно быть сатичским
+  using Items = array<Item, SIZE>;                                    // требуется в этой строке
 
   Items GetItems() const {
     Items result;
